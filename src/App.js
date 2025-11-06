@@ -8,15 +8,18 @@ function App() {
   const cicekEmojileri = ["🌸", "🌻", "🌼", "🌷", "🌹"];
   const cicekSayisi = 15;
   const varOcg = "çiçek-toplama"; // Türkçe değişken
-  console.log("Oyun ID:", varOcg); // Kullanım eklenerek eslint hatası önlendi
+  console.log("Oyun ID:", varOcg); // eslint hatası önlendi
 
   // Tek bir çiçek oluştur
-  const rastgeleCicek = (id) => ({
-    id,
-    emoji: cicekEmojileri[Math.floor(Math.random() * cicekEmojileri.length)],
-    x: Math.random() * 90,
-    y: Math.random() * 70,
-  });
+  const rastgeleCicek = useCallback(
+    (id) => ({
+      id,
+      emoji: cicekEmojileri[Math.floor(Math.random() * cicekEmojileri.length)],
+      x: Math.random() * 90,
+      y: Math.random() * 70,
+    }),
+    [cicekEmojileri]
+  );
 
   // Tüm çiçekleri oluştur
   const cicekleriOlustur = useCallback(() => {
@@ -25,7 +28,7 @@ function App() {
     );
     setCicekler(yeniCicekler);
     setSkor(0);
-  }, [cicekEmojileri, cicekSayisi]);
+  }, [rastgeleCicek, cicekSayisi]);
 
   // Başlangıçta oluştur
   useEffect(() => {
