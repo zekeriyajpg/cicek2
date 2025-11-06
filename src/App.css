@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+/* Oyun alanı */
+.oyun-alani {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #e0f7fa, #fce4ec);
+  overflow: hidden;
+  position: relative;
+  font-family: "Poppins", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Üst bar */
+.ust-bar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid #f48fb1;
+}
+
+/* Buton */
+.btn {
+  background-color: #f06292;
   color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover {
+  background-color: #ec407a;
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Çiçek alanı */
+.cicek-alani {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Çiçekler */
+.cicek {
+  position: absolute;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  animation: ziplama 2s infinite ease-in-out;
+}
+
+.cicek:hover {
+  transform: scale(1.4);
+}
+
+/* Zıplama animasyonu */
+@keyframes ziplama {
+  0% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
